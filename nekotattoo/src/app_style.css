@@ -1,5 +1,125 @@
 html, body{
     background: #000;
     margin: 0;
+    height: 100%;
+    position: relative;
+
 }
 
+.navbar-container{
+    position: relative;
+    
+    width: 100%;
+    height: 80px;
+    background: #680E14;
+}
+.inner-navbar-container{
+    color: white;
+    width: 1300px;
+    justify-self: center;
+    font-size: 25px;
+    font-family: 'Old Standard TT';
+    font-style: italic;
+    height: 80px;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.navelement{
+    cursor: pointer;
+}
+.dropdown-button{
+    width: 10px;
+    height: 10px;
+    filter: invert(1);
+    cursor: pointer;
+    
+}
+.dropdown-active{
+        width: 10px;
+    height: 10px;
+    filter: invert(1);
+    cursor: pointer;
+    transform: rotateZ(180deg);   
+}
+.guideNavElement,
+.aboutmeNavElement{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    position: relative;
+}
+
+
+.guides-window{
+    bottom: -140px;
+    left: -103.5px;
+    border: 1px solid 680E14 ;
+    position: absolute;
+    background: #680e148a;
+    width: 300px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    & p{
+        font-family: "Old Standard TT";
+        font-style: normal;
+        display: inline;
+        font-size: 22px;
+    }
+}
+.aboutme-window{
+        bottom: -140px;
+    left: -120px;
+    border: 1px solid 680E14 ;
+    position: absolute;
+    background: #680e148a;
+    width: 300px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    & p{
+        font-family: "Old Standard TT";
+        font-style: normal;
+        display: inline;
+        font-size: 22px;
+    }
+}
+#paw{
+    width: 25px;
+    filter: invert(1);
+}
+.crucialToKnow,
+.myStory{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 1px solid white;
+    width: 90%;
+    column-gap: 20px;
+    cursor: pointer;
+    & p {
+        margin-bottom: 15px;
+    }
+}
+.faq,
+.gallery{
+     display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 90%;
+    column-gap: 20px;
+    cursor: pointer;
+     & p {
+        margin-bottom: 15px;
+    }
+}
