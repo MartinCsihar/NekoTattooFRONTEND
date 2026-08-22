@@ -1,12 +1,11 @@
 import React from 'react'
-import "./Styles/Home.css"
-import homeBackground from "../../public/Photos/Kira/front.png"
-import roseBody from "../../public/roseBody.svg"
-import roseFlower from "../../public/roseLeft.svg"
-import NekoTattooText from "../../public/nekotattoo.svg"
-import paw from "../../public/pawsOutline.png"
+import "./DesktopHome.css"
+import roseFlower from "../../../public/roseLeft.svg"
+import NekoTattooText from "../../../public/nekotattoo.svg"
+import paw from "../../../public/pawsOutline.png"
 import { useNavigate } from 'react-router-dom'
-const Home = () => {
+
+const DesktopHome = () => {
   const navigate = useNavigate()
   return (
     <>
@@ -17,7 +16,7 @@ const Home = () => {
         <img className='NekoTattooText' src={NekoTattooText} alt="" />
         <p className='mottoText'>"A bőrőd a legszebb vászon, viseld rajta a történeted."</p>
         <div className="buttons-container">
-          <button className='createConsultationButton' onClick={()=>navigate("/createConsultation")}>Konzultáció kérése <img id='paw'  src={paw} alt="" /></button>
+          <button className='createConsultationButton' onClick={()=>navigate("/createConsultation")}>Konzultáció kérése <img id='pawHome'  src={paw} alt="" /></button>
           <button className='myWorkButton' onClick={()=>navigate("/gallery")}>Munkáim</button>
         </div>
       </div>
@@ -26,4 +25,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default DesktopHome

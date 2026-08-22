@@ -25,7 +25,6 @@
     position: absolute;
     bottom: -400px;
     left: -500px;
-    z-index: -1;
     pointer-events: none;
 }
 .roseDesignRight{
@@ -34,7 +33,7 @@
     position: absolute;
     top: -450px;
     right: -550px;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
 }
 .mid-section-container{
@@ -61,36 +60,48 @@
         display: flex;
         width: 90%;
         justify-content: space-evenly;
-
-        & .createConsultationButton{
-            cursor: pointer;
-            border: 1px solid white;
-            background: #000;
-            color: white;
-            width: 340px;
-            height: 60px;
-            font-size: 23px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            column-gap: 30px;
-            font-family: 'Old Standard TT';
-            font-style: italic;
-        }
-        & .myWorkButton{
-            cursor: pointer;
-            border: 1px solid white;
-            background: transparent;
-            color: white;
-            width: 340px;
-            height: 60px;
-            font-size: 23px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            column-gap: 30px;
-            font-family: 'Old Standard TT';
-            font-style: italic;
-        }
+    }
 }
+ .myWorkButton{
+    cursor: pointer;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    width: 340px;
+    height: 60px;
+    font-size: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+    font-family: 'Old Standard TT';
+    font-style: italic;
+    transition: all 200ms ease;
+}
+.createConsultationButton{
+    cursor: pointer;
+    border: 1px solid white;
+    background: #000;
+    color: white;
+    width: 340px;
+    height: 60px;
+    font-size: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+    font-family: 'Old Standard TT';
+    font-style: italic;
+    transition: all 200ms ease;
+}
+.createConsultationButton:hover{
+    background-color: transparent;
+   
+}
+.myWorkButton:hover{
+    border-radius: 20px;
+}
+#pawHome{
+    width: 25px;
+    filter: invert(1);
 }
