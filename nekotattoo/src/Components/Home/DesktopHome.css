@@ -47,21 +47,26 @@
     & .NekoTattooText{
         position: relative;
         z-index: 1;
-        width: 1000px;
+        width: 60vw;
+        min-width: 400px;
+
         pointer-events: none;
     }
     & .mottoText{
+        position: relative;
+        z-index: 2;
         color: white;
         font-size: 24px;
         font-family: 'Courier New';
         margin-bottom: 80px;
+        text-align: center;
         
     }
     & .buttons-container{
         position: relative;
         z-index: 1;
         display: flex;
-        width: 90%;
+        width: 800px;
         column-gap: 2px;
         justify-content: space-evenly;
     }
@@ -71,7 +76,7 @@
     border: 1px solid white;
     background: transparent;
     color: white;
-    width: 340px;
+    width: 300px;
     height: 60px;
     font-size: 23px;
     display: flex;
@@ -87,7 +92,7 @@
     border: 1px solid white;
     background: #000;
     color: white;
-    width: 340px;
+    width: 300px;
     height: 60px;
     font-size: 23px;
     display: flex;

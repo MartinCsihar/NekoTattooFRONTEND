@@ -7,7 +7,6 @@
     align-items: center;
 }
 .mobile-home-container::before{
-    
     content: "";
     position: absolute;
     inset: -10px;
@@ -36,9 +35,10 @@
 }
 .mid-mobile-home-section-container{
     /* border: 1px solid white; */
-    width: 400px;
-    height: 300px;
-    margin-bottom: 80px;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 200px;
     position: relative;
     z-index: 10;
     display: flex;
@@ -47,7 +47,8 @@
     flex-direction: column;
 }
 .nekotattoo-mobile-home{
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     
 }
 .home-quote{
@@ -60,6 +61,7 @@
     display: flex;
     margin-top: 30px;
     width: 100%;
+    min-width: 360px;
     align-items: center;
     justify-content: space-evenly;
 }
@@ -68,9 +70,9 @@
     border: 1px solid white;
     background: transparent;
     color: white;
-    width: 190px;
+    width: 45%;
     height: 60px;
-    font-size: 23px;
+    font-size: 21px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,9 +85,9 @@
     border: 1px solid white;
     background: #000;
     color: white;
-    width: 190px;
+    width: 45%;
     height: 60px;
-    font-size: 23px;
+    font-size: 21px;
     display: flex;
     justify-content: center;
     align-items: center;

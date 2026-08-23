@@ -13,7 +13,8 @@
 .inner-navbar-container{
    
     color: white;
-    width: 1300px;
+    width: 80vw;
+    min-width: 600px;
     justify-self: center;
     font-size: 21px;
     font-family: 'Old Standard TT';
