@@ -26,6 +26,7 @@ const DesktopConsultation = () => {
   const [aiClicked, setAiClicked] = useState<boolean>(false)
   const [photoCounter, setPhotoCounter] = useState<number|undefined>(0)
   const [photoList, setPhotoList] = useState<string[]>([])
+  const [numOfTattoos, setNumOfTattoos] = useState<number>(1)
   const bodyPartsList = [
       "Alkar",
       "Felkar",
@@ -89,6 +90,31 @@ const DesktopConsultation = () => {
               <br /><br /><b>FIGYELEM:</b> Legfeljebb 4 tetoválást kérhetsz mérettől függetlenül, amely több alkalmat is magával vonhat (De ezt a konzultáció során mindenképpen megbeszéljük)!
               </p>
             </div>
+            <div className="number-of-tattoos-outer-container">
+              <button onClick={ ()=>{
+                let count = numOfTattoos-1
+                if (numOfTattoos < 2) {
+                  setNumOfTattoos(1)
+                }else{
+                  setNumOfTattoos(numOfTattoos-1)
+                }
+              }
+              } className='numoftattoo-button'>-</button>
+              <div className="number-of-tattoos-container">
+                    <p className='number-of-tattoos-text'>
+                      {numOfTattoos}
+                    </p>       
+              </div>
+              <button onClick={ ()=>{
+                let count = numOfTattoos+1
+                if (numOfTattoos > 3) {
+                  setNumOfTattoos(4)
+                }else{
+                  setNumOfTattoos(numOfTattoos+1)
+                }
+              }
+              } className='numoftattoo-button'>+</button>
+            </div>  
             <div className="tattoo-information-window-container">
               <div className="photo-selector-outer-container">
                   <div onClick={()=> handleFileUpload()} className="photo-selector-container" 
@@ -225,8 +251,8 @@ const DesktopConsultation = () => {
                           </button>
                         </div>
               </div>
-
             </div>
+            
           </div>
         </div>
 

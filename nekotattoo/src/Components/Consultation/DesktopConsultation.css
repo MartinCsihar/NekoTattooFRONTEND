@@ -52,7 +52,7 @@ body,html{
     border: 1px solid black;
     box-sizing: border-box;
     background: #680e1410;
-    margin-top: 30px;
+    margin-top: 10px;
     height: fit-content;
     padding: 15px;
     display: flex;
@@ -469,6 +469,60 @@ body,html{
 .previousPhoto{
     left: 10px;
     transform: scaleX(-1);
+}
+.number-of-tattoos-container{
+    /* border: 1px solid black; */
+    width: 160px;
+    position: relative;
+    justify-self: center;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: large;
+
+}
+.number-of-tattoos-container::before{
+    content: "Tetoválások száma";
+    position: absolute;
+    top: -20px;
+    font-family: 'Courier New', Courier, monospace;
+    width: max-content;
+}
+.number-of-tattoos-text{
+    text-align: center;
+    background: transparent;
+    height: 100%;
+    margin: 0;
+    height: fit-content;
+}
+.number-of-tattoos-outer-container{
+    margin-top: 30px;
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+}
+.numoftattoo-button{
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid black;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    font-family: "Old Standard TT";
+    font-size: large;
+    font-weight: bolder;
+    box-shadow: 1px 1px 0 black;
+    transition: all 100ms ease;
+}
+.numoftattoo-button:active{
+    transform: translateX(1px) translateY(1px);
+    box-shadow: 0 0 0 black;
 }
 @media (min-width:1500px) {
         .pricequote-container{
