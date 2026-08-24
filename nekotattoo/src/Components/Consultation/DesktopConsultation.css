@@ -1,0 +1,599 @@
+.desktop-pricequote-background-container{
+    position: relative;
+    width: 100vw;
+    max-height: 100%;
+    padding-top: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body,html{
+    overflow-y: scroll;
+}
+.pricequote-container{
+    box-sizing: border-box;
+    border: 1px solid #680E14;
+    /* width: 70%; */
+    min-width: 350px;
+    height: fit-content;
+    /* max-width: 60%; */
+    /* max-height: fit-content; */
+}
+.pricequote-inner-container{
+    width: 95%;
+    height: 100%;
+    justify-self: center;
+    padding: 5px;
+}
+.pricequote-header-container{
+    color: black;
+    height: 50px;
+    text-align: center;
+    font-size: 36px;
+    font-family: "Old Standard TT";
+    border-bottom: 1px solid #680E14;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    & .pricequote-text{
+        margin-bottom: 15px;
+    }
+
+}
+.pricequote-guidetext-container{
+    font-family: 'Courier New';
+    /* border: 1px solid black; */
+    margin-top: 10px;
+    font-size: large;
+}
+.tattoo-information-window-container{
+    width: 100%;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background: #680e1410;
+    margin-top: 30px;
+    height: fit-content;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 35px;
+    
+}
+.upload-img{
+    width: 50px;
+}
+.upload-img.clicked{
+    display: none;
+}
+.photo-selector-container{
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+    min-width: 300px;
+    height: 400px;
+    border: .5px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#photo-selector{
+    display: none;
+}
+.right-container{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    row-gap: 10px;
+}
+.info-container{
+    /* border: 1px solid black; */
+    width: 100%;
+    margin-top: 20px;
+    height: fit-content;
+    min-width: 300px;
+    display: flex;
+    column-gap: 30px;
+    flex-wrap: wrap;
+}
+
+.bodyPart-button{
+    outline:none;
+    position: relative;
+    cursor: pointer;
+    background: transparent;
+    width: 200px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 40px;
+    min-width: 130px;
+   font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    align-items: center;
+    justify-content: space-around;
+    
+     & .img{
+        width: 15px;
+        height: 15px;
+        transform: rotateZ(90deg);
+        justify-self: end;
+        margin-right: 5px;
+        transition: all 150ms ease;
+    }
+    & p{
+        justify-self: center;
+        margin: 0;
+        font-size: large;
+        
+    }
+}
+
+.infobutton::before{
+    content: attr(data-name);
+    position: absolute;
+    top: -22px;
+    left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    font-style: italic;
+}
+.bodypart-dropdown{
+    z-index: 2;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    height: 0px;
+    overflow: hidden;
+    transition: all 250ms ease;
+    background: #680e1475;
+    position: absolute;
+    top: 39px;
+    justify-self: center;
+    width: 170px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    row-gap: 9px;
+    flex-direction: column;
+    align-items: center;
+}
+.bodypart-dropdown.active{
+    z-index: 2;
+    background: #680e1433;
+    position: absolute;
+    top: 39px;
+    justify-self: center;
+    width: 170px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    row-gap: 9px;
+    flex-direction: column;
+    align-items: center;
+    
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    overflow: hidden;
+    height: 340px;
+    
+    transition: all 250ms ease;
+    
+}
+
+
+.rotateimage{
+    width: 15px;
+    height: 15px;
+    transform:  rotateZ(-90deg);
+    justify-self: end;
+    margin-right: 5px;
+    transition: all 150ms ease;
+}
+.bodypart-option{
+    background: #00000015;
+    width: 90px;
+    font-size: 14px;
+    margin: 0;
+    transition: all 150ms ease;
+}
+.bodypart-option:hover{
+    background: white;
+}
+.tattooHeight-input,
+.tattooWidth-input{
+    outline:none;
+    box-sizing: border-box;
+    padding: 10px;
+    cursor: auto;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background: transparent;
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 40px;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+.tattooHeight-input::-webkit-inner-spin-button,
+.tattooHeight-input::-webkit-outer-spin-button,
+.tattooWidth-input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+.height-input-container,
+.width-input-container{
+    position: relative;
+     min-width: 130px;
+     width: 200px;
+     height: fit-content;
+}
+.height-input-container::before{
+    content: "Magasság (cm)";
+    position: absolute;
+    top: -22px;
+    left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    font-style: italic;
+}
+.width-input-container::before{
+        content: "Szélesség (cm)";
+    position: absolute;
+    top: -22px;
+    left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    font-style: italic;
+}
+.widthHeight.height{
+    position: absolute;
+    width: 30px;
+    right: 10px;
+    transform: rotateZ(90deg);
+    top:5px;
+}
+.widthHeight.width{
+        position: absolute;
+    width: 30px;
+    right: 10px;
+    
+    top:5px;
+}
+.style-container{
+    box-sizing: border-box;
+    position: relative;
+    border: 1px solid black;
+    height: 40px;
+    min-width: 130px;
+    width: 200px;
+    text-align: center;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: large;
+   
+}
+.style-container::before{
+    content: "Stílus¹";
+    position: absolute;
+    top: -22px;
+    left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    font-style: italic;
+    font-weight: normal;
+}
+.custom-design-check-button{
+    cursor: pointer;
+    border: 1px solid black;
+    background: transparent;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    & .check-img{
+        width: 15px;
+       
+    }
+   
+}
+.custom-tattoo-check-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: 30px;
+    column-gap: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+     & p{
+         margin: 0;
+    }
+}
+.custom-design-guide-text-container{
+    /* border: 1px solid black; */
+
+    & p {
+        font-family: 'Courier New', Courier, monospace;
+        margin:0;
+        font-size: large;
+    }
+}
+.custom-design-tattoo-text-container{
+    /* border: 1px solid black; */
+    margin-top: 20px;
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+    min-width: 250px;
+    align-self: center;
+}
+.custom-design-text{
+    box-sizing: border-box;
+    padding: 10px;
+    outline: none;
+    resize: none;
+
+    border-radius: 10px;
+    border: 1px solid black;
+    height: 100px;
+    min-width: 300px;
+    width: fit-content;
+    background: transparent;
+    text-align: left;
+    vertical-align: top;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+}
+.custom-design-tattoo-text-container::before{
+    content: "Tervezés";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: larger;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+}
+.price-quote-response-container{
+    position: relative;
+    border: 1px solid black;
+    width: 400px;
+    height: 80px;
+    align-self: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    font-family: "Old Standard TT";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bolder;
+}
+.left-cat-ear,
+.right-cat-ear{
+    width: 35px;
+    position: absolute;
+    top: -30px;
+}
+.left-cat-ear{
+    left: -20px;
+    transform: scaleX(-1);
+}
+.right-cat-ear{
+    right: -20px;
+}
+.lengthCounter{
+    position: absolute;
+    bottom: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    right: 16px;
+    font-weight: bolder;
+}
+.ai-icon{
+    width: 30px;
+    height: 30px;
+}
+.ai-price-quote-button-container{
+    width: fit-content;
+    align-self: center;
+}
+.ai-price-quote-button{
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid black;
+    width: 300px;
+    height: 50px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px 2px 0 black;
+    transition: all 100ms ease;
+    & p{
+        font-family: "Old Standard TT";
+        font-size: 24px;
+        font-style: italic;
+    }
+}
+.ai-price-quote-button:active{
+    box-shadow: 0 0 0 black;  
+    transform: translateX(2px) translateY(2px);  
+}
+.photo-selector-outer-container{
+    display: flex;
+    align-items: center;
+}
+.photoCounter{
+    position: absolute;
+    bottom: -2px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    color: white;
+
+}
+.nextPhoto,
+.previousPhoto{
+    position: absolute;
+    width: 40px;
+    z-index: 100;
+    height: 40px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    & img{
+        position: relative;
+        z-index: 3;
+        width: 22px;
+        cursor: pointer;
+        /* filter: invert(1); */
+        
+    }
+}
+.nextPhoto{
+    right: 10px;
+}
+.previousPhoto{
+    left: 10px;
+    transform: scaleX(-1);
+}
+@media (min-width:1500px) {
+        .pricequote-container{
+            max-width: 60vw;
+        }
+        .info-container{
+            display: flex;
+            flex-direction:row;
+            width: 100%;
+            justify-content: center;
+            column-gap: 30px;
+            row-gap: 25px;
+
+        }
+        .right-container{
+           width: 100%;
+           
+        }
+        .custom-design-text{
+            width: 500px;
+        }
+}
+@media (min-width:1001px) and (max-width:1500px) {
+    .pricequote-container{
+        width: 80vw;
+    }
+    .info-container{
+        column-gap: 5px;
+        row-gap: 25px;
+        justify-content: center;
+        
+    }
+    .right-container{
+        width: 100%;
+      
+    }
+   .custom-design-text{
+        width:340px;
+   }
+   .price-quote-response-container{
+        width: 350px;
+    & p{
+        font-size: 30px;
+    }
+   }
+   .custom-design-guide-text-container{
+        margin-top: 0px;
+   }
+}
+@media (min-width: 789px) and (max-width:1000px) {
+    .pricequote-container{
+        width: 80vw;
+    }
+    .tattoo-information-window-container{
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .info-container{
+        margin-top: 40px;
+        justify-content: center;
+        row-gap: 30px;
+    }
+    .bodypart-dropdown.active{
+        z-index: 1;
+        background: #680e14b4;
+    }
+    .bodypart-option{
+        border-radius: 30px;
+        color: white;
+        background: #72101664;
+    }
+    .custom-design-guide-text-container{
+        margin-top: 20px;
+        
+    }
+    .custom-design-text{
+        width: 400px;
+    }
+}
+@media (max-width: 768px ){
+    .tattoo-information-window-container{
+        height: fit-content;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .pricequote-container{
+        box-sizing: border-box;
+        width: 85vw;
+    }
+    .pricequote-guidetext-container{
+        font-size: 16px;
+    }
+    .info-container{
+        margin-top: 30px;
+        justify-content: center;
+        row-gap: 30px;
+    }
+    .bodypart-dropdown.active{
+        z-index: 1;
+        background: #680e14b4;
+    }
+    .bodypart-option{
+        border-radius: 30px;
+        color: white;
+        background: #72101664;
+    }
+   .right-container{
+        max-width: 300px;
+   }
+   .custom-design-text{
+    width: 300px;
+   }
+   .price-quote-response-container{
+    width: 250px;
+    & p{
+        font-size: 30px;
+    }
+   }
+   .custom-design-guide-text-container{
+    margin-top: 20px;
+   }
+}
