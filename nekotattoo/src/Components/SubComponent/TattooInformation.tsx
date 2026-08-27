@@ -14,7 +14,7 @@ import { useRef } from 'react'
 import { SyncLoader } from 'react-spinners'
 import axios from 'axios'
 
-type bodyPart = "Teljes Kar" |"Alkar" | "Felkar" | "Váll" | "Hát" | "Has" | "Nyak" | "Comb" | "Vádli" | "Boka" | "Lábfej" | "Kézfej" | "Mellkas" |"X" ;
+type bodyPart = "Kar" | "Alkar" | "Felkar" | "Váll" | "Hát" | "Has" | "Nyak" | "Comb" | "Vádli" | "Boka" | "Lábfej" | "Kézfej" | "Mellkas" |"X" ;
 type tattooStyle = "Fekete" | "Színes" 
 type Tattoo = {
   id: number;
@@ -29,18 +29,6 @@ type Tattoo = {
   customDesignTattooText:string;
 }
 
-type GetPriceQuoteForCustomTattooReq = {
-  tattooRefference:File[];
-  customTattooText:string;
-  width:Number;
-  height:Number;
-  tattooStyle:"Fekete"
-}
-type GetPriceQuoteReq = {
-  sizeWidth:Number,
-  sizeHeight:Number,
-  tattooRefference:File[]
-}
 
 
 type TattooInformationProps = {
@@ -56,8 +44,6 @@ const TattooInformation = ({onDelete, onChange, tattoo}:TattooInformationProps) 
   
   const [customDesignCheck, setCustomDesignCheck] = useState<boolean>(false)
   const [customDesignTextLength, setCustomDesingTextLength] = useState<number>(0);
-  const [customDesignText, setCustomDesignText] = useState<string>("")
-  const [aiClicked, setAiClicked] = useState<boolean>(false)
   const [photoCounter, setPhotoCounter] = useState<number|undefined>(0)
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -67,6 +53,7 @@ const TattooInformation = ({onDelete, onChange, tattoo}:TattooInformationProps) 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const bodyPartsList: bodyPart[] = [
+      "Kar",
       "Alkar",
       "Felkar",
       "Váll",
@@ -81,32 +68,48 @@ const TattooInformation = ({onDelete, onChange, tattoo}:TattooInformationProps) 
       "Kézfej"
     ];
 
-async function handlePriceQuoteForCustomDesignTattoo(){
+  async function handlePriceQuoteForCustomDesignTattoo(){
     try{
+     
       setLoading(true)
       const formData = new FormData()
       tattoo.tattooRefferences?.forEach(file => {
         formData.append("tattooRefference", file)
       })
-      formData.append("customTattooText", customDesignText)
-      formData.append("width", tattoo.width.toString())
-      formData.append("height", tattoo.height.toString())
+      formData.append("customTattooText", tattoo.customDesignTattooText)
+      formData.append("sizeWidth", tattoo.width == undefined ? "" : tattoo.width.toString())
+      formData.append("sizeHeight", tattoo.height == undefined ? "" : tattoo.height.toString())
       formData.append("tattooStyle", tattoo.style)
-      const res = 
-        await axios.post("http://localhost:8099/api/getPriceQuoteForCustomTattoo", formData ,{withCredentials:true} )
-      onChange(tattoo.id, {tattooPrice:res.data.price})
 
-      if (!tattoo.largeTattoo &&  tattoo.width == undefined && tattoo.height == undefined) {
-        onChange(tattoo.id, {width:res.data.estimatedWidth})
-        onChange(tattoo.id, {height:res.data.estimatedHeight})
-      }
-      console.log(res.data)
-      if(res.data.price === 0){
-        onChange(tattoo.id, {largeTattoo:true})
-      }
+       const res = 
+         await axios.post("http://localhost:8099/api/getPriceQuoteForCustomTattoo", formData ,{withCredentials:true} )
+
+       onChange(tattoo.id, {tattooPrice:res.data.price})
+
+      if (res.data.wrongCustomText) {
+          alert("Kérlek adj meg egy normális szöveget!")
+          onChange(tattoo.id, {customDesignTattooText:""})
+       }
+       if(res.data.price === 0){
+         onChange(tattoo.id, {largeTattoo:true})
+       }
+       
+        if (res.data.notRealMeasure) {
+          if (tattoo.width !== undefined && tattoo.height !== undefined && res.data.notRealMeasure) {
+            alert("Az általad megadott méretek valószínüleg nem helyesek, ezért lecseréltem őket egy becsült értékre")
+          }else{
+            alert("Mivel nem adtál meg méreteket, így a helyükre egy becsült érték kerül!")
+          }
+        }
+       let noMeasuresGivenAndNotLargeTatt = (!tattoo.largeTattoo &&  (tattoo.width == undefined || isNaN(tattoo.width)) && (tattoo.height == undefined || isNaN(tattoo.height)))
+      let noMeasuresGivenAndLargeTatt = (tattoo.largeTattoo &&  (tattoo.width == undefined || isNaN(tattoo.width)) && (tattoo.height == undefined || isNaN(tattoo.height)))
+     
+       if (res.data.notRealMeasure || noMeasuresGivenAndLargeTatt || noMeasuresGivenAndNotLargeTatt) {
+         onChange(tattoo.id, {width:res.data.estimatedWidth})
+         onChange(tattoo.id, {height:res.data.estimatedHeight})
+        }
       
     }catch(err){
-      console.log(err)
        alert("Elérted az AI árajánlat kereted, több árajánlatot nem kérhetsz!")
     }finally{
       setLoading(false)
@@ -118,27 +121,35 @@ async function handlePriceQuoteForCustomDesignTattoo(){
       const formData = new FormData()
       
       formData.append("tattooRefference", tattoo.tattooRefferences[0])
-      if (tattoo.width == undefined && tattoo.height == undefined ) {
-        formData.append("width", "")
-        formData.append("height","")
-        
-      }else{
-        formData.append("width", tattoo.width?.toString())
-        formData.append("height", tattoo.height?.toString())
-        
-      }
+      formData.append("sizeWidth", tattoo.width == undefined ? "" : tattoo.width.toString())
+      formData.append("sizeHeight", tattoo.height == undefined ? "" : tattoo.height.toString())
+      
       const res = 
-      await axios.post("http://localhost:8099/api/getPriceQuote", formData , {withCredentials:true})
-        
-      onChange(tattoo.id, {tattooPrice:res.data.price})
-      if(res.data.price === 0){
-        onChange(tattoo.id, {largeTattoo:true})
+        await axios.post("http://localhost:8099/api/getPriceQuote", formData , {withCredentials:true})
+      if (res.data.wrongCustomText) {
+        alert("Kérlek adj meg egy normális szöveget. Ez egy árajánlatba került!")
+        onChange(tattoo.id, {customDesignTattooText:""})
+      }else{
+        onChange(tattoo.id, {tattooPrice:res.data.price})
+        if(res.data.price === 0){
+          onChange(tattoo.id, {largeTattoo:true})
+        }
+      
+         let noMeasuresGivenAndNotLargeTatt = (!tattoo.largeTattoo &&  (tattoo.width == undefined || isNaN(tattoo.width)) && (tattoo.height == undefined || isNaN(tattoo.height)))
+         let noMeasuresGivenAndLargeTatt = (tattoo.largeTattoo &&  (tattoo.width == undefined || isNaN(tattoo.width)) && (tattoo.height == undefined || isNaN(tattoo.height)))
+          if (res.data.notRealMeasure) {
+            if (tattoo.width !== undefined && tattoo.height !== undefined && res.data.notRealMeasure) {
+              alert("Az általad megadott méretek valószínüleg nem helyesek, ezért lecseréltem őket egy becsült értékre")
+            }else{
+              alert("Mivel nem adtál meg méreteket, így a helyükre egy becsült érték kerül!")
+        }
+        }
+        if (res.data.notRealMeasure || noMeasuresGivenAndLargeTatt || noMeasuresGivenAndNotLargeTatt) {
+          onChange(tattoo.id, {width:res.data.estimatedWidth})
+          onChange(tattoo.id, {height:res.data.estimatedHeight})
+          }
+    
       }
-      if (!tattoo.largeTattoo && tattoo.width == undefined && tattoo.height == undefined) {
-        onChange(tattoo.id, {width:res.data.estimatedWidth})
-        onChange(tattoo.id, {height:res.data.estimatedHeight})
-      }
-      console.log(res.data)
     }catch(err){
       alert("Elérted az AI árajánlat kereted, több árajánlatot nem kérhetsz!")
     }finally{
@@ -175,8 +186,7 @@ async function handlePriceQuoteForCustomDesignTattoo(){
     let indexOfImage = photoList.indexOf(currPhoto);
 
     if(direction == "next"){
-      if (indexOfImage === 2) {
-
+      if ((indexOfImage == 1 && photoList.length == 2 )||( indexOfImage == 2 && photoList.length == 3)) {
           setImage(photoList[0])
           
         }else{
@@ -185,10 +195,12 @@ async function handlePriceQuoteForCustomDesignTattoo(){
         }
       }
     else if(direction === "prev"){
-        if (indexOfImage === 0) {
+        if (indexOfImage === 0 && photoList.length == 3) {
           setImage(photoList[2])
-        }else{
-        
+        }else if(indexOfImage === 0 && photoList.length == 2){
+          setImage(photoList[1])
+        }
+        else{
           setImage(photoList[indexOfImage-1])
           
         }
@@ -206,6 +218,7 @@ async function handlePriceQuoteForCustomDesignTattoo(){
                     <img  className={uploadClicked ? 'upload-img clicked' : 'upload-img'} src={upload} alt=""  />
                     <input 
                       multiple={tattoo.customDesignTattoo}
+                      maxLength={3}
                       type="file" 
                       ref={fileInputRef}
                       id='photo-selector'
@@ -214,10 +227,14 @@ async function handlePriceQuoteForCustomDesignTattoo(){
                           const files = e.target.files;
 
                           if (!files || files.length === 0) return;
-                          
+                          if (files.length > 3) {
+                            alert("Legfeljebb 3 képet válassz ki!")
+                            return;
+                          }
                           const filesArray = Array.from(files);
-                          
+                          onChange(tattoo.id, {tattooPrice:0})
                           if (tattoo.customDesignTattoo) {
+                            onChange(tattoo.id, {tattooPrice:0})
     
                               const urls = filesArray.map(file =>
                                   URL.createObjectURL(file)
@@ -244,7 +261,7 @@ async function handlePriceQuoteForCustomDesignTattoo(){
                       e.stopPropagation()
                       loadPhoto("prev")
                     }}style={tattoo.customDesignTattoo && photoCounter > 1 ? {display:"flex"}:{display:'none'}} className='previousPhoto'><img src={arrow} alt="" /></div>
-                    <span className='photoCounter' style={tattoo.customDesignTattoo ? {display:"block"} : {display:"none"}}>{photoCounter}/3</span>
+                    <span className='photoCounter' style={tattoo.customDesignTattoo ? {display:"block"} : {display:"none"}}> <p>{photoCounter}/3</p></span>
                   </div>
               </div>
                 <div className='right-container'>
@@ -253,9 +270,7 @@ async function handlePriceQuoteForCustomDesignTattoo(){
                     <p>
                       Tölts fel legfeljebb 3 képet olyan tetoválásokról, amelyeken megtetszett valami, vagy tölts fel legalább egy képet, amin változtatnál.
                       <br /><b>Fontos</b>: Részletesen írd le a “Tervezés” szövegdobozba, hogy hogyan gondoltad ki a tetoválást a legpontosabb árajánlathoz!
-                    </p>
-                  
-                  
+                    </p>  
                   </div>
 
                   <div className="info-container">
@@ -276,12 +291,14 @@ async function handlePriceQuoteForCustomDesignTattoo(){
                           <input 
                           value={tattoo.height}
                           onChange={(e)=> {
-                            const val = Number.parseFloat(e.target.value)
-                            onChange(tattoo.id, {height:val})
+                            const val =  e.target.value
+                            onChange(tattoo.id, {
+                              height: val === "" ? undefined : Number.parseFloat(val)
+                            });
                           
                           }}
                           className='tattooHeight-input' 
-                          placeholder='pl.: 10.5' 
+                          placeholder='pl.: 10,5' 
                           type="number" 
                           min={0} 
                           step={0.1} />
@@ -291,12 +308,14 @@ async function handlePriceQuoteForCustomDesignTattoo(){
                           <input 
                           value={tattoo.width}
                           onChange={(e)=> {
-                            const val = Number.parseFloat(e.target.value)
-                            onChange(tattoo.id, {width:val})
+                            const val =  e.target.value
+                            onChange(tattoo.id, {
+                              width: val === "" ? undefined : Number.parseFloat(val)
+                            });
                           
                           }}
                           className='tattooWidth-input' 
-                          placeholder='pl.: 5.5' 
+                          placeholder='pl.: 5,5' 
                           type="number" 
                           min={0} 
                           step={0.1} />
@@ -309,43 +328,49 @@ async function handlePriceQuoteForCustomDesignTattoo(){
                           <button className='custom-design-check-button' onClick={()=>{
                                 setCustomDesignCheck(!customDesignCheck)
                                 onChange(tattoo.id, {customDesignTattoo:!customDesignCheck})
+                                onChange(tattoo.id, {tattooPrice:0})
                                 setPhotoCounter(0)
                                 setImage("")
                                 setUploadClicked(false)
                               }}>
                               <img style={tattoo.customDesignTattoo ? {display:"block"} : {display:"none"}} className='check-img' src={check} alt="" />
                           </button>
-                          <p>Egyedi minta³</p>
+                          <p>Egyedi minta</p>
                         </div>
                       </div>
                         <div className="custom-design-tattoo-text-container" style={tattoo.customDesignTattoo ? {display:'block'} : {display:'none'}}>
                               <textarea onChange={(e)=> {
                                   onChange(tattoo.id, {customDesignTattooText:e.target.value})
                                   setCustomDesingTextLength(e.target.textLength)
-                                }} className='custom-design-text' maxLength={150} />
-                              <span className='lengthCounter'>{customDesignTextLength}/150</span>
+                                }} className='custom-design-text' maxLength={200} />
+                              <span className='lengthCounter'>{customDesignTextLength}/200</span>
                         </div>
                           {   !tattoo.largeTattoo ?
                             <>
                               <div className="price-quote-response-container">
-                                <img className='left-cat-ear' src={catEar} alt="" />
-                                <img className='right-cat-ear' src={catEar} alt="" />
+                                <img className={loading ? 'left-cat-ear rotate-ear' : 'left-cat-ear'} src={catEar} alt="" />
+                            <img className={loading ? 'right-cat-ear rotate-ear' : 'right-cat-ear'} src={catEar} alt="" />
                                 {/* price quote response */}
-                                <p>{tattoo.tattooPrice === undefined ? formatHuf(0) : formatHuf(tattoo.tattooPrice)}</p>
+                                <p>{tattoo.tattooPrice === 0 ? undefined : formatHuf(tattoo.tattooPrice)}</p>
                               </div>
 
                               <div className="ai-price-quote-button-container">
                                 <button onClick={()=>{
-                                  if(tattoo.tattooRefferences.length == 0){
-                                    alert("Először tölts fel képet/képeket a tetoválásról!")
-                                    return;
-
+                                  if(tattoo.tattooPrice !== 0) {
+                                    alert("Erre a tetoválásra már kértél egy árajánlatot!")
                                   }else{
+
+                                    if(tattoo.tattooRefferences.length == 0){
+                                      alert("Először tölts fel képet/képeket a tetoválásról!")
+                                      return;
+                                      
+                                    }else{
                                     if(customDesignCheck){
                                       handlePriceQuoteForCustomDesignTattoo()
                                     }else{
                                       handlePriceQuote()
                                   }
+                                }
                                 }
                             }} className={loading ? "ai-price-quote-button loading" : "ai-price-quote-button"}>
                                   <img className='ai-icon' src={ai} alt="" />
@@ -356,7 +381,7 @@ async function handlePriceQuoteForCustomDesignTattoo(){
                             </>             
                             : 
                             <div className="large-tattoo-text-container">
-                              <p className='large-tattoo-text'>A <b>tetoválásod</b>, mérete alapján teljesen <b>egyedi árazást igényel</b>, így AI árajánlat nem kérhető rá. A konzultáció során megbeszéljük a pontos árát. </p>
+                              <p className='large-tattoo-text'>A <b>tetoválásod</b> mérete alapján teljesen <b>egyedi árazást igényel</b>, így erre nem kérhető AI árajánlat. A konzultáció során megbeszéljük a pontos árat. </p>
                             </div>
                         }
               </div>

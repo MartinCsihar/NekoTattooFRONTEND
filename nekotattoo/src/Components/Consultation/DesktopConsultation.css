@@ -164,8 +164,8 @@ body,html{
     align-items: center;
 }
 .bodypart-dropdown.active{
-    z-index: 2;
-    background: #680e1433;
+    z-index: 1;
+    background: #680e14b4;
     position: absolute;
     top: 39px;
     justify-self: center;
@@ -196,7 +196,9 @@ body,html{
     transition: all 150ms ease;
 }
 .bodypart-option{
-    background: #00000015;
+    border-radius: 30px;
+    color: white;
+    background: #72101664;
     width: 90px;
     font-size: 14px;
     margin: 0;
@@ -204,6 +206,7 @@ body,html{
 }
 .bodypart-option:hover{
     background: white;
+    color: black;
 }
 .tattooHeight-input,
 .tattooWidth-input{
@@ -391,6 +394,46 @@ body,html{
     position: absolute;
     top: -30px;
 }
+.left-cat-ear.rotate-ear{
+    animation: left-ear-animation 800ms infinite;
+}
+.right-cat-ear.rotate-ear{
+    animation: right-ear-animation 800ms infinite;
+}
+@keyframes left-ear-animation {
+    0%, 100% {
+        transform: scaleX(-1) rotate(0deg);
+    }
+    20% {
+        transform: scaleX(-1) rotate(-15deg) ;
+    }
+
+    40% {
+        transform: scaleX(-1) rotate(10deg);
+    }
+
+    60% {
+        transform: scaleX(-1) rotate(-5deg);
+    }
+}
+@keyframes right-ear-animation {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    20% {
+        transform: rotate(-15deg);
+    }
+
+    40% {
+        transform: rotate(10deg);
+    }
+
+    60% {
+        transform: rotate(-5deg);
+    }
+}
+
+
 .left-cat-ear{
     left: -20px;
     transform: scaleX(-1);
@@ -444,19 +487,29 @@ body,html{
 }
 .photoCounter{
     position: absolute;
-    bottom: -2px;
+    bottom: 10px;
     right: 10px;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 19px;
+    border-radius: 10px;
+    
+    background: #000000;
+   
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
     color: white;
-
+   & p{
+    text-align: center;
+    margin: 0;
+    width: 100%;
+   }
 }
 .nextPhoto,
 .previousPhoto{
     position: absolute;
     width: 40px;
+    background: #000;
+    border-radius: 50px;
     z-index: 100;
     height: 40px;
     cursor: pointer;
@@ -465,9 +518,9 @@ body,html{
     & img{
         position: relative;
         z-index: 3;
-        width: 22px;
+        width: 20px;
         cursor: pointer;
-        /* filter: invert(1); */
+        filter: invert(1);
         
     }
 }
@@ -609,6 +662,47 @@ body,html{
    width: 20px;
    height: 10px;
 }
+.continue-button-container{
+    height: 45px;
+    width: fit-content;
+    justify-self: end;
+    margin-top: 15px;
+    /* border: 1px solid black; */
+
+}
+.continue-button{
+    cursor: pointer;
+    height: 100%;
+    border: 1px solid black;
+    background-color: transparent;
+    width: 180px;
+    display: grid;
+    grid-template-columns: 120px 60px;
+    column-gap: 10px;
+    align-items: center;
+    transition: all 140ms ease;
+    & img{
+        width: 30px;
+        height: 30px;
+        transform: rotateZ(90deg);
+    }
+    & p{
+        text-align: end;
+        
+        margin: 0;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: "Courier New";
+    }
+}
+.continue-button:hover{
+    column-gap: 20px;
+}
+.information-window-container{
+    font-size: large;
+    height:fit-content;
+    font-family: 'Courier New';
+}
 @media (min-width:1500px) {
         .pricequote-container{
             max-width: 60vw;
@@ -739,5 +833,11 @@ body,html{
    .photo-selector-container{
     height: 320px;
     margin-top: 25px;
+   }
+   .continue-button{
+    margin-top: 20px;
+   }
+   .add-tattoo-button{
+    margin-top: -14px;
    }
 }
