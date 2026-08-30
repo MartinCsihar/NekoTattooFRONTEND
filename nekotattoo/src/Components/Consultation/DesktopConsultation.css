@@ -7,10 +7,9 @@
     justify-content: center;
     align-items: center;
 }
-body,html{
-    overflow-y: scroll;
-}
+
 .pricequote-container{
+    box-shadow: 0 0 30px rgba(196, 194, 194, 0.994);
     position: relative;
     box-sizing: border-box;
     border: 1px solid #680E14;

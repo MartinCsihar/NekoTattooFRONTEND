@@ -6,6 +6,7 @@ html, body{
     padding: 0;
     /* overflow:hidden; */
     overflow-x: hidden;
+    overflow-y: auto;
 }
 body{
     background: #EFE9DF;

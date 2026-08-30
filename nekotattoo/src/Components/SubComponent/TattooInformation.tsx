@@ -83,7 +83,7 @@ const TattooInformation = ({onDelete, onChange, tattoo}:TattooInformationProps) 
 
        const res = 
          await axios.post("http://localhost:8099/api/getPriceQuoteForCustomTattoo", formData ,{withCredentials:true} )
-
+     
        onChange(tattoo.id, {tattooPrice:res.data.price})
 
       if (res.data.wrongCustomText) {

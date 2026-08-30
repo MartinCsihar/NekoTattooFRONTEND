@@ -1,0 +1,296 @@
+.consultationfinal-background-container{
+    /* background: #000; */
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.consultation-final-container{
+
+    flex-direction: column;
+
+    margin: 10px;
+    box-sizing: border-box;
+    padding: 15px;
+    box-shadow: 0 0 30px rgba(196, 194, 194, 0.994);
+    background: #ffe9ddaf;
+    border: 1px solid black;
+    height:900px;
+    display: flex;
+    justify-content: start;
+    width: 50%;
+    
+    min-width: 350px;
+    row-gap: 20px;
+    justify-self: center;
+    height: fit-content;
+    position: relative;
+    z-index: 3;
+}
+.finalconsultation{
+    width: 100%;
+    
+}
+.guide-text-container{
+    /* border: 1px solid black; */
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+}
+.user-data-inputs-container{
+    /* background: #000; */
+    /* border: 1px solid black; */
+    width: 70%;
+    min-width: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    row-gap: 65px;
+    column-gap: 65px;
+    justify-content: center;
+    align-self: center;
+    margin-top: 30px;
+
+}
+.input-container{
+    /* background: rgba(255, 0, 0, 0.465); */
+    
+    position: relative;
+    display: flex;
+    align-items: center;
+    & input{
+        outline: none;
+        background: transparent;
+        border:  1px solid black;
+        border-radius: 40px;
+        height: 50px;
+        width: 100%;
+        text-align: left;
+        box-sizing: border-box;
+        padding: 10px;
+        padding-left: 25px;
+        font-size: 15px;
+        font-family: 'Courier New', Courier, monospace;
+
+    }
+    & .mailIcon, .personIcon{
+        width: 35px;
+        position: absolute;
+        right: 10px;
+    }
+    & .phoneIcon{
+       width: 28px;
+        position: absolute;
+        right: 10px;
+    }
+   
+}
+
+
+.input-container::before{
+    content: attr(data-label);
+    position: absolute;
+    top: -25px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    left: 20px;
+}
+
+.price-quote-information-container{
+    /* background: #000; */
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin-top: 50px;
+}
+
+.price-quote-container{
+    width: 200px;
+    height: 50px;
+    position: relative;
+    border: 1px solid black;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Old Standard TT";
+    font-style: italic;
+    font-weight: bold;
+    font-size: 24px;
+    background: #680e1416;
+    
+    & p{
+        margin: 0;
+    }
+}
+.price-quote-container::before{
+    content: "Becsült fizetendő";
+    position: absolute;
+    top: -25px;
+    left: 0px;
+    height: fit-content;
+    
+    width: inherit;
+    /* border: 1px solid black; */
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+    font-size: 19px;
+}
+
+.gdpr-aszf-container{
+    /* border: 1px solid black; */
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+}
+.gdpr-aszf-container img{
+    width: 20px;
+}
+.gdpr-aszf-check-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    outline: none;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.gdpr-aszf-text{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+}
+.create-consultation-button-container{
+    position: relative;
+    width: fit-content;
+    justify-self: center;
+    /* border: 1px solid black; */
+    height: fit-content;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.create-consultation-button{
+    cursor: pointer;
+    background: #91141d;
+    color: white;
+    font-family: 'Old Standard TT';
+    box-sizing: border-box;
+    width: 350px;
+    height: 60px;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 100;
+    border: 1px solid black;
+    border-radius: 10px 0 10px 0;
+    box-shadow: 2px 2px 0 black;
+    transition: all 250ms ease;
+}
+.create-consultation-button:active{
+    transform: translateX(2px)  translateY(2px);
+    box-shadow: none;
+}
+.szfinx-absolute{
+    position: absolute;
+    left: -150px;
+    width: 140px;
+}
+.bambino-sleep-absolute{
+    width: 100px;
+    position: absolute;
+    top: -31px;
+}
+@media (min-width:1500px) {
+    .input-container{
+        width:400px;
+    }
+    .user-data-inputs-container{
+        width: 900px;
+    }
+    .consultation-final-container{
+        width: 1200px;
+    }
+}
+@media (min-width:1001px) and (max-width:1500px) {
+    .finalconsultation{
+        font-size: 30px;
+    }
+    .consultation-final-container{
+        width: 80%;
+    }
+    .user-data-inputs-container{
+        width: 90%;
+        flex-wrap: wrap;
+    }
+    .input-container{
+        width: 40%;
+    } 
+    
+}
+@media (min-width: 768px) and (max-width:1000px) {
+    .finalconsultation{
+            font-size: 25px;
+    }
+        .consultation-final-container{
+        width: 80%;
+    }
+    .user-data-inputs-container{
+        width: 90%;
+        flex-wrap: wrap;
+    }
+    .input-container{
+        width: min(270px, 50%);
+    
+    } 
+    .gdpr-aszf-check-button{
+        height: 25px;
+        width: 25px;
+         & img{
+        width: 10px;
+    }
+    }
+}
+@media (max-width: 768px ){
+  .finalconsultation{
+    font-size: 20px;
+  }
+  .input-container{
+    width: 80%;
+  }
+  .user-data-inputs-container{
+    column-gap: none;
+    row-gap: 35px;
+    margin-top: 10px;
+  }
+  .consultation-final-container{
+    height: fit-content;
+
+  }
+  .consultationfinal-background-container{
+    align-items: flex-start;
+  }
+  .gdpr-aszf-check-button{
+    height: 25px;
+    & img{
+        width: 10px;
+    }
+  }
+  .create-consultation-button-container{
+    width: fit-content;
+    margin-bottom: 10px;
+  }
+  .szfinx-absolute{
+    display: none;
+  }
+  
+  .create-consultation-button{
+    font-size: small;
+    width: 175px;
+  }
+  
+}

@@ -56,6 +56,7 @@ const Consultation = () => {
   const navigate = useNavigate()
   function  handleConsultationContinue(){
     let errThrown = false;
+    let finalPrice = 0;
       let finalTattooList: Tattoo[] = [
             {
                 id: 1,
@@ -73,14 +74,15 @@ const Consultation = () => {
       ]
      
        finalTattooList.forEach((tattoo, index) => {
+          finalPrice += tattoo.tattooPrice;
          if (tattoo.bodyPart == "X" || (tattoo.tattooPrice == 0 && tattoo.largeTattoo != true)) {
            alert(`A(z) ${index+1}. tetoválásnál nem választottál testrészt, vagy nem kértél AI árajánlatot!`)
            errThrown = true
          }
        });
-    
+       
        if (!errThrown) {
-         navigate("/createConsultationFinal", {
+         navigate(`/createConsultationFinal?p=${finalPrice}`, {
            state:{
              tattoos: finalTattooList
            }
@@ -263,6 +265,7 @@ const Consultation = () => {
                 <br /><br /><img style={{width:'25px'}} src={warning} alt="" /> <b>FIGYELEM:</b> Legfeljebb 4 tetoválást kérhetsz mérettől függetlenül, amely több alkalmat is magával vonhat (De ezt a konzultáció során mindenképpen megbeszéljük)!
                 <br /><br /><img style={{width:'25px'}} src={warning} alt="" /> <b>FONTOS:</b> A tetoválás méreteit nem kötelező megadni, azonban <b>nagyon ajánlott, amennyiben pontos árajánlatot szeretnél kapni!</b> Ha nem tudod a tetoválás méreteit, akkor érdemes egy olyan képet feltölteni róla, amelyen egy testrészen van, hogy pontosabb méretbecslést kaphass.
                 <br /><br /><img style={{width:'25px'}} src={warning} alt="" /> <b>AI ÁRAJÁNLAT:</b> Az esetleges félreértések végett legfeljebb naponta <b>4 árajánlatot kérhetsz!</b> Kérlek legyél erre tekintettel. Emellett <b>teljes mértékben egy becsült ár</b> , <b>tájékoztató jelleggel</b> , a <b>végső ár még változhat</b>!
+                <br /><br /><img style={{width:'25px'}} src={warning} alt="" /> <b>AZ AI HIBÁZHAT:</b> A <b>tetoválás ára</b> és -amennyiben nem adtad meg- <b>méretei</b> generáltak, így nem vehetők készpénznek, csupán <b>tájékoztató jellegűek</b>!
               </p>
             </div>
             <div className="tattoo-information-window-container">
