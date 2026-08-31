@@ -750,7 +750,7 @@
         margin-top: 0px;
    }
 }
-@media (min-width: 789px) and (max-width:1000px) {
+@media (min-width: 768px) and (max-width:1000px) {
     .pricequote-container{
         width: 80vw;
     }
