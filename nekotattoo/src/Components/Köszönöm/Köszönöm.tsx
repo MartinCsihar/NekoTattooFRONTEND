@@ -29,7 +29,7 @@ const Köszönöm = () => {
                     <div className="thx-text-body">
                       <p>Nagyon örülök, hogy engem választottál a következő tetoválásodhoz.</p>
                       <p>A tetoválás számomra történetmesélés — alig várom, hogy megismerjem a tiédet, és együtt alkossunk valami igazán személyeset.</p>
-                      <p>Ha van bármi kérdésed, nyugodtan vedd fel velem a <a href="/contacts">kapcsolatot</a>.</p>
+                      <p>Ha van bármi kérdésed, nyugodtan vedd fel velem a <a href="/contact">kapcsolatot</a>.</p>
                     </div>
                   </section>
                   <div className="thx-logo-container">
