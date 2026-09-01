@@ -1,6 +1,6 @@
 .home-main-container{
     position: relative;
-    height: 95.2dvh;
+    height: calc(100dvh - 70px);
     display: flex;
     flex-direction: column;
     justify-content: center;

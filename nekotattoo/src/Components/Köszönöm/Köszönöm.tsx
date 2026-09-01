@@ -7,7 +7,7 @@ import thxCardLogo from "../../../public/thxCardLogo.svg"
 const Köszönöm = () => {
   return (
     <>
-      <main>
+      <main className='thx-main-container'>
         <section>
           <div className="inner-content-contaner">
             <div className="photo-container" 

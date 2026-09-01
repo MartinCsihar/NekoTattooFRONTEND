@@ -43,7 +43,7 @@ const MobileNavBar = () => {
             </div>
              <div className="aboutme mobileNavElementContainer">
                 <img className='pawMobileNav' src={pawMobileNav} alt="" />
-                <p onClick={()=>gotoURL("/aboutmemobile")}>Rólam</p>
+                <p onClick={()=>gotoURL("/aboutme")}>Történetem</p>
             </div>
         </div>
     </div>

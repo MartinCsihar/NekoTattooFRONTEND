@@ -18,7 +18,7 @@ const MobileHome = () => {
             <p className='home-quote'>“A bőröd a legszebb vászon, viseld rajta a történeted”</p>
             <div className="mobile-home-button-container">
               <button className='createConsultationButton-mobile' onClick={()=>navigate("/createConsultation")}>Konzultáció<img id='pawHome-mobile'  src={paw} alt="" /></button>
-              <button className='myWorkButton-mobile' onClick={()=>navigate("/gallery")}>Munkáim</button>
+              <button className='myWorkButton-mobile' onClick={()=>navigate("/aboutme")}>Rólam</button>
             </div>
         </div>
       </div>

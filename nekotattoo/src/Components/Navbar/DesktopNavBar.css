@@ -6,7 +6,7 @@
     width: 100%;
     height: 70px;
     background: #680E14;
-    z-index: 999;
+    z-index: 9999;
     & .nekoLogo{
         width: 30px;
     }
@@ -74,7 +74,7 @@
     left: -103.5px;
     border: 1px solid 680E14 ;
     position: absolute;
-    background: #680e148a;
+    background: #680e14de;
     width: 300px;
     height: 100px;
     display: flex;
@@ -107,7 +107,7 @@
     left: -120px;
     border: 1px solid 680E14 ;
     position: absolute;
-    background: #680e148a;
+    background: #680e14de;
     width: 300px;
     height: 100px;
     display: flex;

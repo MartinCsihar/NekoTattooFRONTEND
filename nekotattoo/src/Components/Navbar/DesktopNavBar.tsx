@@ -50,7 +50,7 @@ const DesktopNavBar = () => {
   return (
             <div className="navbar-container">
           <div className='inner-navbar-container'>
-              <p className={createConsultationActive ? 'navelement active' : 'navelement'} onClick={()=> gotoURL("/createConsultation")}>Konzultáció</p>
+              <p className={createConsultationActive ? 'navelement active' : 'navelement'} onClick={()=> gotoURL("/createConsultation")}>Árajánlat</p>
               <div className="guideNavElement">
                 <p className='navelement' onClick={() => setGuideWindowActive(!guideWindowActive)}>Útmutató</p>
                 <img className={guideWindowActive ? 'dropdown-button dropdown-active' : "dropdown-button"} onClick={() => setGuideWindowActive(!guideWindowActive)} src={dropdown} alt="" />
@@ -80,7 +80,7 @@ const DesktopNavBar = () => {
                   <div className={aboutMeWindowActive && !isMobile ? 'aboutme-window active' : 'aboutme-window'}>
                     <div className="myStory">
                       <img id='pawNav' src={paw} alt="" />
-                      <p onClick={()=> gotoURL("/myStory")}>Történetem</p>
+                      <p onClick={()=> gotoURL("/aboutme")}>Történetem</p>
                     </div>
                     <div className="gallery">
                       <img id='pawNav' src={paw} alt="" />

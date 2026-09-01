@@ -1,0 +1,464 @@
+.aboutme-mystory-container{
+    background: #EFE9DF;
+    width: 100%;
+    height: calc(100dvh - 70px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.aboutmerose{
+    width: 350px;
+}
+.roseBody{
+    position: absolute;
+}
+.roseBody.bottom{
+    left: 0;
+    z-index: 1000;
+    bottom: 0;
+    width: 1100px;
+}
+.roseBody.left{
+    
+    left: -500px;
+    top: 500px;
+    height: 190px;
+    transform: rotateZ(90deg);
+}
+.roseBody.top{
+    z-index: 1000;
+    transform: rotateZ(-180deg);
+    right: 200px;
+    top:0;
+    width: 1100px;
+}
+.roseBody.right{
+    right: -400px;
+    top: 500px;
+    height: 150px;
+    transform: rotateZ(-90deg);
+}
+.mid-container{
+    border-radius: 20px;
+    position: relative;
+    z-index: 999;
+    background-image: url("/rolamTexture.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 75%;
+    height: calc(70dvh - 70px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.181);
+}
+.inner-section-container{
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    position: relative;
+    display: flex;
+   
+    column-gap: 40px;
+
+}
+.aboutme-photo-container{
+    height: 100%;
+    width: 30%;
+    border-radius: 20px;
+    background-image: url("/Photos/Kira/rolamFoto.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.aboutme-text-container{
+    /* border: 1px solid black; */
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 16px;
+    padding-top: 9px;
+    text-align:justify;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & p{
+        font-family: 'Courier New', Courier, monospace;
+        font-style: italic;
+        font-size:21px;
+        
+    }
+}
+
+.text-flower{
+    position: absolute;
+    width: 60px;
+}
+.text-flower.top{
+    transform: rotateZ(20deg);
+    top: 0;
+    left: 0;
+}
+.text-flower.bottom{
+    bottom: 0;
+    right: 0;
+    transform: rotateZ(-70deg);
+    scale: -1 1;
+}
+.beni-photo-container{
+    position: absolute;
+    right: -200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 1px solid black; */
+    height: 100%;
+}
+.beni-photo{
+    width: 550px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 150px;
+    border-bottom-right-radius: 150px;
+}
+.beni-photo.bot{
+    height: 452.5px;
+    background-size: contain;
+}
+
+@media(min-width:2000px){
+
+    .aboutme-text-container p{
+        font-size: 33px;
+        
+    }
+    .aboutme-text-container img{
+        width: 90px;
+    }
+}
+@media (min-width:1500px) and (max-width:2000px) {
+    .aboutme-text-container p{
+        font-size: 21px;
+    }
+    .beni-photo.bot, .beni-photo.top{
+        width: 360px;
+    }
+    .beni-photo.bot{
+        height: 290px;
+    }
+    
+
+}
+@media (min-width:1001px) and (max-width:1500px) {
+    .aboutme-mystory-container{
+        height: fit-content;
+    }
+    .aboutme-photo-container{
+        width: 90%;
+        align-self: center;
+        border: 10px solid black;
+        height: 250px;
+        border-radius: 0;
+        
+    }
+    .aboutmerose{
+        display: none;
+    }
+    .roseBody{
+        display: none;
+    }
+    .mid-container{
+        height: 100%;
+        background: transparent;
+        box-shadow: none;
+        /* border: 1px solid red; */
+        border-radius: 0;
+        width: 100dvw;
+        overflow-y: auto;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        padding:5px;
+    }
+    .inner-section-container{
+        flex-direction: column;
+    }
+    .beni-photo-container{
+        position: relative;
+        justify-content: space-evenly;
+        width: 100%;
+        height: fit-content;
+        left: 0;
+        flex-direction: row;
+        margin-top: 20px;
+        column-gap: 10px;
+    }
+    .beni-photo{
+        width: 350px;
+        border-radius: 10px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 500ms ease;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.314);
+    }
+    .beni-photo.bot{
+        height: 290px;
+    }
+    .aboutme-text-container{
+        /* border: 1px solid black; */
+        width: 90%;
+        align-self: center;
+        padding: 20px;
+        & p{
+            font-size: 17px;
+        }
+    }
+    .reference-photo-container{
+        border-top: 1px solid #680E14;
+        margin-top: 50px;
+        width: 85%;
+        justify-self: center;
+        position: relative;
+        box-sizing: border-box;
+        padding-top: 20px;
+        columns: 2;
+        column-gap: 10px;
+        
+
+    }
+    .ref-image{
+        width: 100%;
+        margin-top: 5px;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.308);
+        transform: translateY(10px);
+        opacity: 0;
+        transition: all 500ms ease;
+
+    }
+    .ref-image.animate{
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.308);
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+    .beni-photo.animate{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    .beni-alszik{
+        position: absolute;
+        width: 100px;
+        top: -33px;
+       
+    } 
+}
+@media (min-width: 768px) and (max-width:1000px) {
+  
+    .aboutme-mystory-container{
+        height: fit-content;
+    }
+    .aboutme-photo-container{
+        width: 90%;
+        align-self: center;
+        border: 10px solid black;
+        height: 250px;
+        border-radius: 0;
+        
+    }
+    .aboutmerose{
+        display: none;
+    }
+    .roseBody{
+        display: none;
+    }
+    .mid-container{
+        height: 100%;
+        background: transparent;
+        box-shadow: none;
+        /* border: 1px solid red; */
+        border-radius: 0;
+        width: 100dvw;
+        overflow-y: auto;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        padding:5px;
+    }
+    .inner-section-container{
+        flex-direction: column;
+    }
+    .beni-photo-container{
+        position: relative;
+        justify-content: space-evenly;
+        width: 100%;
+        height: fit-content;
+        left: 0;
+        flex-direction: row;
+        margin-top: 20px;
+        column-gap: 10px;
+    }
+    .beni-photo{
+        width: 300px;
+        border-radius: 10px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 500ms ease;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.314);
+    }
+    .beni-photo.bot{
+        height: 250px;
+    }
+    .aboutme-text-container{
+        /* border: 1px solid black; */
+        width: 90%;
+        align-self: center;
+        padding: 20px;
+        & p{
+            font-size: 17px;
+        }
+    }
+    .reference-photo-container{
+        border-top: 1px solid #680E14;
+        margin-top: 50px;
+        width: 85%;
+        justify-self: center;
+        position: relative;
+        box-sizing: border-box;
+        padding-top: 20px;
+        columns: 2;
+        column-gap: 10px;
+        
+
+    }
+    .ref-image{
+        width: 100%;
+        margin-top: 5px;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.308);
+        transform: translateY(10px);
+        opacity: 0;
+        transition: all 500ms ease;
+
+    }
+    .ref-image.animate{
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.308);
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+    .beni-photo.animate{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    .beni-alszik{
+        position: absolute;
+        width: 100px;
+        top: -33px;
+       
+    }
+}
+@media (max-width: 767px ){
+    .aboutme-mystory-container{
+        height: fit-content;
+    }
+    .aboutme-photo-container{
+        width: 90%;
+        align-self: center;
+        border: 10px solid black;
+        height: 250px;
+        border-radius: 0;
+        
+    }
+    .aboutmerose{
+        display: none;
+    }
+    .roseBody{
+        display: none;
+    }
+    .mid-container{
+        height: 100%;
+        background: transparent;
+        box-shadow: none;
+        /* border: 1px solid red; */
+        border-radius: 0;
+        width: 100dvw;
+        overflow-y: auto;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        padding:5px;
+    }
+    .inner-section-container{
+        flex-direction: column;
+    }
+    .beni-photo-container{
+        position: relative;
+        justify-content: space-evenly;
+        width: 100%;
+        height: fit-content;
+        left: 0;
+        flex-direction: row;
+        margin-top: 20px;
+        column-gap: 10px;
+    }
+    .beni-photo{
+        width: 200px;
+        border-radius: 10px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 500ms ease;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.314);
+    }
+    .beni-photo.bot{
+        height: 200px;
+    }
+    .aboutme-text-container{
+        /* border: 1px solid black; */
+        width: 90%;
+        align-self: center;
+        padding: 20px;
+        & p{
+            font-size: 17px;
+        }
+    }
+    .reference-photo-container{
+        border-top: 1px solid #680E14;
+        margin-top: 50px;
+        width: 85%;
+        justify-self: center;
+        position: relative;
+        box-sizing: border-box;
+        padding-top: 20px;
+        columns: 2;
+        column-gap: 10px;
+        
+
+    }
+    .ref-image{
+        width: 100%;
+        margin-top: 5px;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.308);
+        transform: translateY(10px);
+        opacity: 0;
+        transition: all 500ms ease;
+
+    }
+    .ref-image.animate{
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.308);
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+    .beni-photo.animate{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    .beni-alszik{
+        position: absolute;
+        width: 100px;
+        top: -33px;
+       
+    }
+}

@@ -1,6 +1,6 @@
 .mobile-home-container{
     position: relative;
-    height: 94dvh;
+    height: calc(100dvh - 70px);
     display: flex;
     flex-direction: column;
     justify-content: center;
