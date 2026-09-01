@@ -1,6 +1,6 @@
 .mobile-home-container{
     position: relative;
-    height: 100vh;
+    height: 94dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,21 +25,21 @@
 
 }
 .roseLeft{
-    transform: rotateZ(100deg);
-    bottom: -100px;
-    left: -200px;
+    width: 200px;
+    bottom: 0;
+    left: 0;
 }
 .roseRight{
-    transform: rotateZ(-70deg);
-    top: -160px;
-    right: -220px;
+    width: 200px;
+    top: 0;
+    right: 0;
 }
 .mid-mobile-home-section-container{
     /* border: 1px solid white; */
     width: 90%;
     max-width: 400px;
     height: auto;
-    margin-bottom: 200px;
+    margin-bottom: 110px;
     position: relative;
     z-index: 10;
     display: flex;

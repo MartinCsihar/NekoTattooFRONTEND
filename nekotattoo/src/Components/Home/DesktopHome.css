@@ -1,6 +1,6 @@
 .home-main-container{
     position: relative;
-    height: 100vh;
+    height: 95.2dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,19 +21,19 @@
     opacity: 95%;
 }
 .roseDesignLeft{
-    width: 1000px;
-    transform: rotateZ(100deg);
+    width: 500px;
+    bottom: 0;
     position: absolute;
-    bottom: -400px;
-    left: -500px;
+    
+    left: 0;
     pointer-events: none;
 }
 .roseDesignRight{
-    width: 1000px;
-    transform: rotateZ(-70deg);
+    width: 500px;
+    
     position: absolute;
-    top: -450px;
-    right: -550px;
+    top: 0;
+    right: 0;
     z-index: 0;
     pointer-events: none;
 }

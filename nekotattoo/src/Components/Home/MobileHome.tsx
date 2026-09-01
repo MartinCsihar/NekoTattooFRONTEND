@@ -1,7 +1,8 @@
 import React from 'react'
 import "./MobileHome.css"
 import mobileHomeBackground from "../../../public/Photos/Kira/front.png"
-import roseMobile from "../../../public/roseLeft.svg"
+import roseLeftNew from "../../../public/roseLeftNew.svg"
+import roseRight from "../../../public/roseRight.svg"
 import NekoTattoo from "../../../public/nekotattoo.svg"
 import { useNavigate } from 'react-router-dom'
 import paw from "../../../public/pawsOutline.png"
@@ -10,8 +11,8 @@ const MobileHome = () => {
   return (
     <>
       <div className="mobile-home-container" data-bg={mobileHomeBackground}>
-        <img className='roseMobile roseLeft' src={roseMobile} alt="" />
-        <img className='roseMobile roseRight' src={roseMobile} alt="" />
+        <img className='roseMobile roseLeft' src={roseLeftNew} alt="" />
+        <img className='roseMobile roseRight' src={roseRight} alt="" />
         <div className="mid-mobile-home-section-container">
             <img className='nekotattoo-mobile-home' src={NekoTattoo} alt="" />
             <p className='home-quote'>“A bőröd a legszebb vászon, viseld rajta a történeted”</p>

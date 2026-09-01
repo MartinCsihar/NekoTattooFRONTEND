@@ -1,6 +1,7 @@
 import React from 'react'
 import "./DesktopHome.css"
-import roseFlower from "../../../public/roseLeft.svg"
+import roseLeftNew from "../../../public/roseLeftNew.svg"
+import roseRight from "../../../public/roseRight.svg"
 import NekoTattooText from "../../../public/nekotattoo.svg"
 import paw from "../../../public/pawsOutline.png"
 import { useNavigate } from 'react-router-dom'
@@ -10,8 +11,8 @@ const DesktopHome = () => {
   return (
     <>
     <div className="home-main-container" data-height={window.innerHeight}>
-      <img className="roseDesignLeft" src={roseFlower} alt=""  />
-      <img className="roseDesignRight" src={roseFlower} alt=""  />
+      <img className="roseDesignLeft" src={roseLeftNew} alt=""  />
+      <img className="roseDesignRight" src={roseRight} alt=""  />
       <div className="mid-section-container">
         <img className='NekoTattooText' src={NekoTattooText} alt="" />
         <p className='mottoText'>"A bőrőd a legszebb vászon, viseld rajta a történeted."</p>
