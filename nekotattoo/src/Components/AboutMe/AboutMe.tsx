@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./AboutMe.css"
 import roseBody from "../../../public/roseBodyNew.svg"
 import roseLeft from "../../../public/roseLeftNew.svg"
@@ -6,8 +6,41 @@ import roseRight from "../../../public/roseRight.svg"
 import textFlower from "../../../public/flower2.png"
 import beniTop from "../../../public/Photos/Beni/beni2.png"
 import beniBot from "../../../public/Photos/Beni/beni1.png"
+import beniAlszik from "../../../public/bambinoAlszik.svg"
 
 const AboutMe = () => {
+  const refs = Object.values(
+      import.meta.glob(
+          "../../assets/Refs/*.{png,jpg,jpeg,webp}",
+          {
+              eager: true,
+              query: "?url",
+              import: "default"
+          }
+      )
+  );
+  useEffect(()=>{
+    if (window.innerWidth <= 1500) {
+      const images = document.querySelectorAll(".ref-image");
+      const imagesBeni = document.querySelectorAll(".beni-photo");
+      const observer = new IntersectionObserver(entries =>{
+        entries.forEach(entry =>{
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate")
+            observer.unobserve(entry.target)
+          }
+        })
+      }, {threshold: 0.3}
+    )
+      images.forEach(image => {
+        observer.observe(image)
+      })
+       imagesBeni.forEach(image => {
+         observer.observe(image)
+       })
+      return () => observer.disconnect()
+    }
+  },[])
   return (
     <>
     <main className='aboutme-mystory-container'>
@@ -20,7 +53,7 @@ const AboutMe = () => {
       <section className='mid-container'>
             <div className="inner-section-container">
                 <section className="aboutme-photo-container">
-                   
+                  
                 </section>
                 <section className="aboutme-text-container">
                     <img src={textFlower} className='text-flower top'/>
@@ -45,6 +78,19 @@ const AboutMe = () => {
                     }}></div>
                 </div>
             </div>
+      {
+        window.innerWidth <= 1500 &&
+        
+        <section className='reference-photo-container'>
+            <img src={beniAlszik} className='beni-alszik' />
+            {
+              refs.map((ref:string) => (
+                  <img className='ref-image' src={ref} key={ref} />
+              ))
+            }
+        </section>
+    
+      }
       </section>
     </main>
     </>
