@@ -10,6 +10,7 @@ import Contact from './Components/Contact/Contact';
 import AboutMe from './Components/AboutMe/AboutMe';
 import Gallery from './Components/Gallery/Gallery';
 import Faq from './Components/FAQ/Faq';
+import CrucialToKnow from './Components/CrucialToKnow/CrucialToKnow';
 import "./app_style.css"
 const App = () => {
   const isMobile = window.innerWidth <= 1500;
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/aboutme' element={<AboutMe/>}/>
         <Route path='/gallery' element={<Gallery/>}/>
         <Route path='/faq' element={<Faq/>}/>
+        <Route path='/crucialtoknow' element={<CrucialToKnow/>}/>
 
       </Routes>
      </>
