@@ -132,25 +132,45 @@
 @media(min-width:2000px){
 
     .aboutme-text-container p{
-        font-size: 33px;
+        font-size: 28px;
         
     }
     .aboutme-text-container img{
         width: 90px;
     }
+    .beni-photo{
+        width: 450px;
+    }
 }
 @media (min-width:1500px) and (max-width:2000px) {
     .aboutme-text-container p{
-        font-size: 21px;
+        font-size: 18px;
     }
-    .beni-photo.bot, .beni-photo.top{
-        width: 360px;
+   
+    .beni-photo{
+        width: 300px;
+       
     }
     .beni-photo.bot{
-        height: 290px;
+        height: 250px;
     }
+    .aboutmerose{
+        width: 200px;
+    }
+    .roseBody.left{
+        height: 150px;
+        left: -390px;
+        top: 200px;
+    }
+    .roseBody.bottom{
+        height: 100px;
+        left: -140px;
+    }
+    .beni-photo-container{
+        /* background: #000; */
+        right: -150px;
     
-
+    }
 }
 @media (min-width:1001px) and (max-width:1500px) {
     .aboutme-mystory-container{

@@ -10,6 +10,43 @@
     & .nekoLogo{
         width: 30px;
     }
+    overflow: hidden;
+}
+.navbar-container::before{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    left: 0px;
+    top: 0px;
+       
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(41, 5, 5, 0.537) 0%,
+        transparent 70%
+    );
+    filter: blur(100);
+    transform: scale(10);
+}
+.navbar-container::after{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    right: 0px;
+    top: 0px;
+       
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(41, 5, 5, 0.537) 0%,
+        transparent 70%
+    );
+    filter: blur(100);
+    transform: scale(10);
 }
 .inner-navbar-container{
    
