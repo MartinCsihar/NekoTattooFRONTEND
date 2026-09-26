@@ -10,8 +10,9 @@
     & .nekoLogo{
         width: 30px;
     }
+    
 }
-.navbar-container::before{
+/* .navbar-container::before{
     content: "";
     position: absolute;
     width: 40px;
@@ -46,7 +47,7 @@
     );
     filter: blur(100);
     transform: scale(10);
-}
+} */
 .inner-navbar-container{
    
     color: white;
