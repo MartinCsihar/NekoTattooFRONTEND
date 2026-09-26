@@ -10,7 +10,6 @@
     & .nekoLogo{
         width: 30px;
     }
-    overflow: hidden;
 }
 .navbar-container::before{
     content: "";
@@ -109,7 +108,7 @@
 .guides-window{
     bottom: -130px;
     left: -103.5px;
-    border: 1px solid 680E14 ;
+    border: 1px solid #680E14 ;
     position: absolute;
     background: #680e14de;
     width: 300px;

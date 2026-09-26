@@ -7,7 +7,7 @@ import paw from "../../../public/pawsOutline.png"
 import "./DesktopNavBar.css"
 
 const DesktopNavBar = () => {
-      const navigate = useNavigate();
+  const navigate = useNavigate();
   const [guideWindowActive, setGuideWindowActive] = useState<boolean>(false)
   const [aboutMeWindowActive, setAboutMeWindowActive] = useState<boolean>(false)
   const isMobile = window.innerWidth <= 768;
