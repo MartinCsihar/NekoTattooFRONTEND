@@ -8,7 +8,7 @@ This repository contains the frontend of my full‑stack application built with 
 
 ## License
 
-Copyright (c) 2026 Martin Csihar
+Copyright (c) 2026 Csihar Martin Márk
 
 All rights reserved.
 
